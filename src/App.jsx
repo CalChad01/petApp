@@ -11,7 +11,7 @@ import Form from './Views/Form';
 function App() {
 
   return (
-    <div>
+    <div className="bg-white absolute h-full w-full">
       <Router>
         
         <Header />

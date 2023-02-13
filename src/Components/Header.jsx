@@ -7,7 +7,7 @@ import { faHouse, faPen } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   return (
-    <header className="h-20 bg-pink-300 font-sans text-white text-4xl flex items-center">
+    <header className="h-20 bg-pink-300 font-sans text-white text-4xl flex items-center ">
       <span className="font-bold px-3">
         COMPANDER
       </span>
