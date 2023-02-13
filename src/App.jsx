@@ -1,15 +1,30 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
+import Header from './Components/Header';
+import Home from './Views/Home';
+import Form from './Views/Form';
 
 function App() {
 
   return (
     <div>
-      <div className="font-bold bg-slate-600 h-20 w-full text-white text-center text-7xl">
-        Howdy World
-      </div>
-      <p>
-        Calvin is annoying and smells
-      </p>
+      <Router>
+        
+        <Header />
+
+        {/* Main Content */}
+        <div>
+          <Routes>
+            <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/form" element={<Form />}></Route>
+          </Routes>
+        </div>
+
+      </Router>   
     </div>
   );
 }
