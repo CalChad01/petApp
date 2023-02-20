@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUser } from '../UserService';
+import { createPet } from '../UserService';
 
 function Form() {
 
@@ -12,7 +12,7 @@ function Form() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(e)
-    createUser(e);
+    createPet(e);
   }
 
   return(
