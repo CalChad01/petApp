@@ -4,11 +4,11 @@ import nyanCat from '../Assets/nyanCat.gif';
 
 function Home() {
 
-  const [petData, setPetData] = useState({});
+  const [petData, setPetData] = useState([]);
 
   const handleGetData = () => {
-    setPetData(getPet(0));
-    console.log(petData.breed)
+    getPet().then(data => setPetData(data))
+    console.log(petData)
   }
 
   return (
@@ -18,7 +18,13 @@ function Home() {
       </div>
       <div>
         <button onClick={handleGetData} className="bg-pink-500 text-white font-bold p-3 w-1/4 rounded-lg hover:duration-100 hover:scale-110 hover:bg-pink-600">Get Data</button>
-        <h1 className="text-black font-xl">{petData.breed}</h1>
+        <ul>
+          {
+          petData && petData.map(pet => (
+            <li key={pet.id}>Pet ID: {pet.id} Pet Breed: {pet.breed}</li>
+          ))
+          }
+        </ul>
       </div>
     </div>
   )
