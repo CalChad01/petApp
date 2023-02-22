@@ -1,7 +1,7 @@
 // API Call Functions
 
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
-const urlOwner = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/owner`;
+const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 
 // GET Pet Data
 export async function getPet() {
