@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faDog, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -24,11 +24,21 @@ function Header() {
         </li>
         <li>
           <Link
-            to="/form"
+            to="/petForm"
             className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4"
           >
             <FontAwesomeIcon
-            icon={faPen}
+            icon={faDog}
+            />
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/ownerForm"
+            className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4"
+          >
+            <FontAwesomeIcon
+            icon={faUser}
             />
           </Link>
         </li>

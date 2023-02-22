@@ -1,34 +1,25 @@
 import { useState } from "react";
 import { createPet } from '../UserService';
-import { v4 as uuid } from 'uuid';
 
-
-
-function Form() {
-
-
+function OwnerForm() {
 
   const [form, setFormVal] = useState({
     id: undefined,
     type: "dog",
     age: undefined,
-    weight: undefined,
-    breed: "",
+    travel: undefined,
     actLevel: 3,
-    otherAnimals: 1,
+    otherPets: 1,
     smallChildren: 1,
     contact: "",
-    trained: "",
-    disabled: "no",
-    health: "",
-    price: undefined,
+    budget: undefined,
   })
 
   const updateForm = (formKey, e) => {
     let newVal;
 
     // value conversion
-    const numVals = ["age", "weight", "actLevel", "otherAnimals", "smallChildren", "price"];
+    const numVals = ["age", "travel", "actLevel", "otherPets", "smallChildren", "budget"];
     if (numVals.includes(formKey) && e.target.value != "") {
         newVal = parseInt(e.target.value);
     }
@@ -47,18 +38,17 @@ function Form() {
     e.preventDefault();
 
     // generate unique ID for pet
-    const unique_id = uuid();
-    const small_id = unique_id.slice(0, 8);
-    form.id = small_id;
+    form.id = Math.floor(100000000000 + Math.random() * 900000000000);
     
-    createPet(form);
+    // make fetch request
+    createOwner(form);
   }
 
   return(
     <div className="grid gap-2 place-items-center w-fit text-white p-1 shadow-xl bg-violet-500">
 
       <h1 className="text-center font-bold text-4xl underline">
-        Pet
+        Owner
       </h1>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 place-items-center">
@@ -84,16 +74,9 @@ function Form() {
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
             <span className="font-bold pr-3 pb-2">
-              Weight (lbs):
+              Travel (miles):
             </span>
-            <input name="weight" type="number" defaultValue={form.weight} onChange={e => updateForm("weight", e)}className="bg-white text-black rounded-lg p-1 w-1/4"></input>
-          </label>
-
-          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
-            <span className="font-bold pr-3 pb-2">
-              Breed:
-            </span>
-            <input name="breed" defaultValue={form.breed} onChange={e => updateForm("breed", e)} className="bg-white text-black rounded-lg p-1"></input>
+            <input name="travel" type="number" defaultValue={form.travel} onChange={e => updateForm("travel", e)}className="bg-white text-black rounded-lg p-1 w-1/4"></input>
           </label>
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
@@ -110,9 +93,9 @@ function Form() {
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
             <span className="font-bold pr-3 pb-2">
-              Friendly with other animals?
+              Have other pets?
             </span>
-            <select name="otherAnimals" defaultValue={form.otherAnimals} onChange={e => updateForm("otherAnimals", e)} className="bg-white text-black rounded-lg p-1">
+            <select name="otherPets" defaultValue={form.otherPets} onChange={e => updateForm("otherPets", e)} className="bg-white text-black rounded-lg p-1">
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
@@ -120,7 +103,7 @@ function Form() {
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
             <span className="font-bold pr-3 pb-2">
-              Friendly with small children?
+              Have small children?
             </span>
             <select name="smallChildren" defaultValue={form.smallChildren} onChange={e => updateForm("smallChildren", e)} className="bg-white text-black rounded-lg p-1">
               <option value="1">Yes</option>
@@ -137,38 +120,11 @@ function Form() {
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
             <span className="font-bold pr-3 pb-2">
-              Trained:
+              Budget ($)
             </span>
-            <input name="trained" defaultValue={form.trained} onChange={e => updateForm("trained", e)} className="bg-white text-black rounded-lg p-1"></input>
+            <input name="budget" type="number" defaultValue={form.budget} onChange={e => updateForm("budget", e)} className="bg-white text-black rounded-lg p-1 w-1/3"></input>
           </label>
-
-          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
-            <span className="font-bold pr-3 pb-2">
-              Disabled?
-            </span>
-            <select type="number" name="disabled" defaultValue={form.disabled} onChange={e => updateForm("disabled", e)} className="bg-white text-black rounded-lg p-1">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </label>
-
-          
-
-          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
-            <span className="font-bold pr-3 pb-2">
-              Health background (vaccines, neutered, etc.)
-            </span>
-            <input name="health" defaultValue={form.health} onChange={e => updateForm("health", e)} className="bg-white text-black rounded-lg p-1"></input>
-          </label>
-
-          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
-            <span className="font-bold pr-3 pb-2">
-              Price ($)
-            </span>
-            <input name="price" type="number" defaultValue={form.price} onChange={e => updateForm("price", e)} className="bg-white text-black rounded-lg p-1 w-1/3"></input>
-          </label>
-        </div>
-        
+        </div> 
   
       </form>
 
@@ -176,4 +132,4 @@ function Form() {
   )
 }
 
-export default Form;
+export default OwnerForm;

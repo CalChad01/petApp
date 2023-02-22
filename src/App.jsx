@@ -6,7 +6,8 @@ import {
 } from 'react-router-dom';
 import Header from './Components/Header';
 import Home from './Views/Home';
-import Form from './Views/Form';
+import PetForm from './Views/PetForm';
+import OwnerForm from './Views/OwnerForm';
 
 function App() {
 
@@ -20,7 +21,8 @@ function App() {
         <div>
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/form" element={<Form />}></Route>
+            <Route exact path="/petForm" element={<PetForm />}></Route>
+            <Route exact path="/ownerForm" element={<OwnerForm />}></Route>
           </Routes>
         </div>
 
