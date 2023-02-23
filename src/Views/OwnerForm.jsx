@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { createPet } from '../UserService';
+import { createOwner } from '../UserService';
 
 function OwnerForm() {
 
   const [form, setFormVal] = useState({
-    id: undefined,
+    id: "",
     type: "dog",
     age: undefined,
     travel: undefined,
@@ -38,7 +38,7 @@ function OwnerForm() {
     e.preventDefault();
 
     // generate unique ID for pet
-    form.id = Math.floor(100000000000 + Math.random() * 900000000000);
+    form.id = Math.floor(100000000000 + Math.random() * 900000000000).toString();
     
     // make fetch request
     createOwner(form);
