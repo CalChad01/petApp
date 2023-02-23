@@ -24,8 +24,7 @@ export async function createPet(data) {
     },
     body: JSON.stringify(data)
   });
-  const content = await response.json();
-
+  const content = await response.json()
   console.log(content);
 }
 
@@ -51,6 +50,5 @@ export async function createOwner(data) {
     body: JSON.stringify(data)
   });
   const content = await response.json();
-
   console.log(content);
 }
