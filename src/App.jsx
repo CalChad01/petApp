@@ -8,6 +8,7 @@ import Header from './Components/Header';
 import Home from './Views/Home';
 import PetForm from './Views/PetForm';
 import OwnerForm from './Views/OwnerForm';
+import Match from './Views/Match';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <div>
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/match" element={<Match />}></Route>
             <Route exact path="/petForm" element={<PetForm />}></Route>
             <Route exact path="/ownerForm" element={<OwnerForm />}></Route>
           </Routes>
