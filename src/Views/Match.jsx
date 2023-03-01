@@ -1,25 +1,7 @@
 import { useState } from 'react';
-import { loadPyodide } from 'pyodide';
 import { main } from '../MatchingAlgorithm';
 
-// const pyodide = await loadPyodide({
-//   indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.22.1/full/',
-// })
-
-// await pyodide.loadPackage('micropip');
-// const micropip = pyodide.pyimport('micropip');
-// await micropip.install('geopy');
-// await micropip.install('haversine');
-
-// const matchAlgorithmCode = matchAlgorithm();
-
 function Match() {
-
-  // const [pythonOutput, setPythonOutput] = useState([]);
-  
-  // const runPythonScript = () => {
-  //   setPythonOutput(pyodide.runPython(matchAlgorithmCode));
-  // }
 
   return(
     <div>

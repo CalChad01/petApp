@@ -1,5 +1,5 @@
-// const geolocation = require('geolocation-nominatim');
-// const haversine = require('haversine');
+const geolocation = require('geolocation-nominatim');
+const haversine = require('haversine');
 
 const owner = JSON.parse('{"Owner_Name":"Kali","travel":1000,"Location":"1866 East Shore Drive Maplewood Minnesota", "type":"Dog","otherPets":"Yes","smallChildren":"Yes","Size":"Large","Age":"Puppy","actLevel":1,"budget":500}');
 const pet1 = JSON.parse('{"Pet_Name":"Bronco","Location":"1325 31st street des moines Iowa", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"95","Age":9,"actLevel":2,"price":450}');
@@ -11,28 +11,28 @@ const pets = [pet1, pet2, pet3, pet4];
 
 const pet_list = [];
 
-// function loc_distance(pet) {
-//   const geolocator = geolocation({ provider: 'openstreetmap' });
+function loc_distance(pet) {
+  const geolocator = geolocation({ provider: 'openstreetmap' });
 
-//   return new Promise((resolve, reject) => {
-//     geolocator(pet.Location, (err, location_pet) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         geolocator(owner.Location, (err, location_owner) => {
-//           if (err) {
-//             reject(err);
-//           } else {
-//             const loc1 = { latitude: location_owner.latitude, longitude: location_owner.longitude };
-//             const loc2 = { latitude: location_pet.latitude, longitude: location_pet.longitude };
-//             const distance = haversine(loc1, loc2, { unit: 'mile' });
-//             resolve(distance);
-//           }
-//         });
-//       }
-//     });
-//   });
-// }
+  return new Promise((resolve, reject) => {
+    geolocator(pet.Location, (err, location_pet) => {
+      if (err) {
+        reject(err);
+      } else {
+        geolocator(owner.Location, (err, location_owner) => {
+          if (err) {
+            reject(err);
+          } else {
+            const loc1 = { latitude: location_owner.latitude, longitude: location_owner.longitude };
+            const loc2 = { latitude: location_pet.latitude, longitude: location_pet.longitude };
+            const distance = haversine(loc1, loc2, { unit: 'mile' });
+            resolve(distance);
+          }
+        });
+      }
+    });
+  });
+}
 
 function type_of_animal(pet) {
   if (pet.type === owner.type) {
@@ -58,20 +58,24 @@ function other_animals(pet) {
   }
 }
 
-// function max_distacne(pet, score) {
-//   return loc_distance(pet).then((distance) => {
-//     if (distance < owner.travel) {
-//       score += 3;
-//     } else if (distance < owner.travel + 35) {
-     
-//       function price_range(pet, score, owner) {
-//         if (pet["price"] < owner["budget"]) {
-//             score = score + 3;
-//         } else if (pet["price"] < owner["budget"] + 100) {
-//             score = score + 2;
-//         }
-//         return score;
-//     }
+function max_distance(pet, score) {
+    distance = loc_distance(pet);
+    if (distance < owner.travel) {
+      score += 3;
+    } else if (distance < owner.travel + 35) {
+        score += 2;
+    }
+    return score;
+}
+
+function price_range(pet, score, owner) {
+    if (pet["price"] < owner["budget"]) {
+        score = score + 3;
+    } else if (pet["price"] < owner["budget"] + 100) {
+        score = score + 2;
+    }
+    return score;
+}
     
 function activity_level(pet, score, owner) {
     if (owner["actLevel"] == pet["actLevel"]) {
@@ -121,15 +125,6 @@ function age(pet, score, owner) {
     return score;
 }
 
-function price_range(pet, score, owner) {
-    if (pet["price"] < owner["budget"]) {
-        score = score + 3;
-    } else if (pet["price"] < owner["budget"] + 100) {
-        score = score + 2;
-    }
-    return score;
-}
-
 export function main() {
     let pet_high = [];
     let pet_med = [];
@@ -147,8 +142,8 @@ export function main() {
         if (pet_list.includes(pet)) {
             let a = age(pet, score, owner);
             let b = activity_level(pet, a, owner);
-            let final_score = price_range(pet, b, owner);
-           // let final_score = max_distacne(pet, c);
+            let c = price_range(pet, b, owner);
+           let final_score = max_distance(pet, c);
             console.log(pet["Pet_Name"], final_score);
             if (final_score < 5) {
                 pet_low.push(pet);
