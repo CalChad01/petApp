@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { loadPyodide } from 'pyodide';
+import matchAlgorithm from '../matching_algorithm';
 
 const pyodide = await loadPyodide({
   indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.22.1/full/',
@@ -10,17 +11,14 @@ const micropip = pyodide.pyimport('micropip');
 await micropip.install('geopy');
 await micropip.install('haversine');
 
+const matchAlgorithmCode = matchAlgorithm()
+
 function Match() {
 
   const [pythonOutput, setPythonOutput] = useState([]);
   
   const runPythonScript = () => {
-    pyodide.runPythonAsync(`
-    print(\'hello world\')
-    `)
-    .then(output => setPythonOutput(output))
-    .catch((err) => { setPythonOutput(err) })
-
+    setPythonOutput(pyodide.runPythonAsync(matchAlgorithmCode))
   }
 
   return(
@@ -30,6 +28,13 @@ function Match() {
       </div>
       <div className="text-3xl">
         <p>{pythonOutput}</p>
+        {/* <ul>
+          {
+            pythonOutput && pythonOutput.map(match => (
+              <li>{match}</li>
+            ))
+          }
+        </ul> */}
       </div>
     </div>
   )
