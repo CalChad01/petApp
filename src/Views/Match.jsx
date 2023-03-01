@@ -1,26 +1,35 @@
-import React from 'react';
+import { useState } from 'react';
 import { loadPyodide } from 'pyodide';
 
-//let pyshell = new PythonShell('matching_algorithm.py');
+const pyodide = await loadPyodide({
+  indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.22.1/full/',
+})
 
-async function runPythonScript() {
-  let pyodide = await loadPyodide({
-    indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.22.1/full/',
-  });
-
-  console.log(pyodide.runPythonAsync("1+2"));
-  return pyodide.runPythonAsync("1+2");
-}
+await pyodide.loadPackage('micropip');
+const micropip = pyodide.pyimport('micropip');
+await micropip.install('geopy');
+await micropip.install('haversine');
 
 function Match() {
+
+  const [pythonOutput, setPythonOutput] = useState([]);
+  
+  const runPythonScript = () => {
+    pyodide.runPythonAsync(`
+    print(\'hello world\')
+    `)
+    .then(output => setPythonOutput(output))
+    .catch((err) => { setPythonOutput(err) })
+
+  }
 
   return(
     <div>
       <div>
         <button onClick={runPythonScript} className="bg-pink-500 text-white font-bold p-3 w-1/4 rounded-lg hover:duration-100 hover:scale-110 hover:bg-pink-600">Run Python Script</button>
       </div>
-      <div>
-        <p></p>
+      <div className="text-3xl">
+        <p>{pythonOutput}</p>
       </div>
     </div>
   )
