@@ -8,7 +8,7 @@ const pet4 = JSON.parse('{"Pet_Name":"Tester","Location":"352 gulfport court las
 
 const pets = [pet1, pet2, pet3, pet4];
 
-const pet_list = [];
+let pet_list = [];
 
 // function loc_distance(pet) {
 //   const geolocator = geolocation({ provider: 'openstreetmap' });
@@ -206,34 +206,35 @@ function get_lat_and_long(x){
   //     console.log("high:", pet_high, "med:", pet_med, "low:", pet_low);
   //   })
   //   .catch(error => console.error(error));
+export function main() {
+  let pet_high = [];
+  let pet_med = [];
+  let pet_low = [];
 
-let pet_high = [];
-let pet_med = [];
-let pet_low = [];
-
-Promise.all([get_lat_and_long(owner), ...pets.map(pet => get_lat_and_long(pet))])
-  .then(results => {
-    const lat_long_owner = results[0];
-    for (let i = 0; i < pets.length; i++) {
-      let pet = pets[i];
-      let score = 0;
-      type_of_animal(pet);
-      if (pet_list.includes(pet)) {
-        small_children(pet);
+  Promise.all([get_lat_and_long(owner), ...pets.map(pet => get_lat_and_long(pet))])
+    .then(results => {
+      const lat_long_owner = results[0];
+      for (let i = 0; i < pets.length; i++) {
+        let pet = pets[i];
+        let score = 0;
+        type_of_animal(pet);
+        if (pet_list.includes(pet)) {
+          small_children(pet);
+        }
+        if (pet_list.includes(pet)) {
+          other_animals(pet);
+        }
+        if (pet_list.includes(pet)) {
+          let a = age(pet, score, owner);
+          let b = activity_level(pet, a, owner);
+          let c = price_range(pet, b, owner);
+          let lat_long_pet = results[i + 1];
+          let final_score = max_distance(lat_long_owner, lat_long_pet, owner, pet, c);
+        }
       }
-      if (pet_list.includes(pet)) {
-        other_animals(pet);
-      }
-      if (pet_list.includes(pet)) {
-        let a = age(pet, score, owner);
-        let b = activity_level(pet, a, owner);
-        let c = price_range(pet, b, owner);
-        let lat_long_pet = results[i + 1];
-        let final_score = max_distance(lat_long_owner, lat_long_pet, owner, pet, c);
-      }
-    }
-  })
-  .then(() => {
-    console.log("high:", pet_high, "med:", pet_med, "low:", pet_low);
-  })
-  .catch(error => console.error(error));
+    })
+    .then(() => {
+      console.log("high:", pet_high, "med:", pet_med, "low:", pet_low);
+    })
+    .catch(error => console.error(error));
+}
