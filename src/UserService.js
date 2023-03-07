@@ -52,3 +52,17 @@ export async function createOwner(data) {
   const content = await response.json();
   console.log(content);
 }
+
+// GET lattitude and longitude
+export async function getCoords(user) {
+  const address = user.address;
+  // Define the URL for the API request
+  const urlGeoCode = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(address)}&key=3ce1df84633c4ee69df601f0e7251810`;
+
+  // Make a request to the API using fetch()
+  const response = await fetch(urlGeoCode);
+  const data = await response.json();
+  const { lat, lng } = data.results[0].geometry;
+
+  return { lat, lng };
+}

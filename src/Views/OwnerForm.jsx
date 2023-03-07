@@ -5,8 +5,10 @@ function OwnerForm() {
 
   const [form, setFormVal] = useState({
     id: "",
+    name: "",
     type: "dog",
-    age: undefined,
+    age: "",
+    address: "",
     travel: undefined,
     actLevel: 3,
     otherPets: 1,
@@ -22,6 +24,16 @@ function OwnerForm() {
     const numVals = ["age", "travel", "actLevel", "otherPets", "smallChildren", "budget"];
     if (numVals.includes(formKey) && e.target.value != "") {
         newVal = parseInt(e.target.value);
+        
+        if (formKey == 'age') {
+          if (newVal <= 2) {
+            newVal = "puppy";
+          } else if (newVal >= 8) {
+            newVal = "senior";
+          } else {
+            newVal = "adult";
+          }
+        }
     }
     else {
       newVal = e.target.value;
