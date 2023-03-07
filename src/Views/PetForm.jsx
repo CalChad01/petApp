@@ -5,10 +5,12 @@ function PetForm() {
 
   const [form, setFormVal] = useState({
     id: undefined,
+    name: "",
     type: "dog",
     age: undefined,
     weight: undefined,
     breed: "",
+    address: "",
     actLevel: 3,
     otherAnimals: 1,
     smallChildren: 1,
