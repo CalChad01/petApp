@@ -53,28 +53,28 @@ function maxDistance(lat_long_owner,lat_long_pet,owner,pet, score) {
 }
 
 function priceRange(pet, score, owner) {
-    if (pet["price"] < owner["budget"]) {
+    if (pet.price < owner.price) {
         score = score + 3;
-    } else if (pet["price"] < owner["budget"] + 100) {
+    } else if (pet.price < owner.budget + 100) {
         score = score + 2;
     }
     return score;
 }
     
 function activityLevel(pet, score, owner) {
-    if (owner["actLevel"] == pet["actLevel"]) {
+    if (owner.actLevel == pet.actLevel) {
         score = score + 3;
     }
-    if (owner["actLevel"] + 1 == pet["actLevel"]) {
+    if (owner.actLevel + 1 == pet.actLevel) {
         score = score + 2;
     }
-    if (owner["actLevel"] - 1 == pet["actLevel"]) {
+    if (owner.actLevel - 1 == pet.actLevel) {
         score = score + 2;
     }
-    if (owner["actLevel"] + 2 == pet["actLevel"]) {
+    if (owner.actLevel + 2 == pet.actLevel) {
         score = score + 1;
     }
-    if (owner["actLevel"] - 2 == pet["actLevel"]) {
+    if (owner.actLevel - 2 == pet.actLevel) {
         score = score + 1;
     }
     return score;
