@@ -112,26 +112,6 @@ function age(pet, score, owner) {
     return score;
 }
 
-// function get_lat_and_long(x){
-//   const address = x["Location"];
-//   //console.log("address",address)
-//   //console.log("TESTING!")
-// // Define the URL for the API request
-//   const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(address)}&key=3ce1df84633c4ee69df601f0e7251810`;
-
-//   // Make a request to the API using fetch()
-//   return fetch(url)
-//     .then(response => response.json())
-//     .then(data => {
-//       // Extract the latitude and longitude from the API response
-//       const { lat, lng } = data.results[0].geometry;
-//       //console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-//       // Return an object containing the lat and lng values
-//       return { lat, lng };
-//     })
-//     .catch(error => console.error(error));
-// }
-
 // global pet list arrays
 let pet_list = [];
 
