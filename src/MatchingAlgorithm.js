@@ -114,7 +114,6 @@ function age(pet, score, owner) {
 
 // global pet list arrays
 let pet_list = [];
-
 let pet_high = [];
 let pet_med = [];
 let pet_low = [];
@@ -122,6 +121,12 @@ let pet_low = [];
 export async function match() {
 
   const lat_long_owner = await getCoords(owner);
+
+  // reset global arrays
+  pet_list = []
+  pet_high = []
+  pet_med = [];
+  pet_low = [];
 
   for (let i = 0; i < pets.length; i++) {
     // get next pet and initialize score
@@ -148,7 +153,7 @@ export async function match() {
       
       let lat_long_pet = await getCoords(pet);
       let final_score = maxDistance(lat_long_owner, lat_long_pet, owner, pet, score);
-      console.log(pet.name, final_score);
+      //console.log(pet.name, final_score);
 
       if (final_score < 5) {
         pet_low.push(pet);
@@ -162,4 +167,8 @@ export async function match() {
     console.log("high:", pet_high);
     console.log("med:", pet_med);
     console.log("low:", pet_low);
+
+    // const data = [pet_high, pet_med, pet_low];
+    // console.log(data);
+    return pet_high;
 }

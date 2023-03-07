@@ -8,13 +8,11 @@ function Home() {
   const [ownerData, setOwnerData] = useState([]);
 
   const handleGetPetData = () => {
-    getPet().then(data => setPetData(data))
-    console.log(petData)
+    getPet().then(data => setPetData(data));
   }
 
   const handleGetOwnerData = () => {
-    getOwner().then(data => setOwnerData(data))
-    console.log(ownerData)
+    getOwner().then(data => setOwnerData(data));
   }
 
   return (
