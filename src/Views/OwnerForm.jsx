@@ -4,10 +4,10 @@ import { createOwner } from '../UserService';
 function OwnerForm() {
 
   const [form, setFormVal] = useState({
-    id: "",
+    id: undefined,
     name: "",
     type: "dog",
-    age: "",
+    age: undefined,
     address: "",
     travel: undefined,
     actLevel: 3,
@@ -24,16 +24,6 @@ function OwnerForm() {
     const numVals = ["age", "travel", "actLevel", "otherPets", "smallChildren", "budget"];
     if (numVals.includes(formKey) && e.target.value != "") {
         newVal = parseInt(e.target.value);
-        
-        if (formKey == 'age') {
-          if (newVal <= 2) {
-            newVal = "puppy";
-          } else if (newVal >= 8) {
-            newVal = "senior";
-          } else {
-            newVal = "adult";
-          }
-        }
     }
     else {
       newVal = e.target.value;
@@ -89,7 +79,7 @@ function OwnerForm() {
             <span className="font-bold pr-3 pb-2">
               Age:
             </span>
-            <input name="age" type="number" defaultValue={form.age} onChange={e => updateForm("age", e)} className="bg-white text-black rounded-lg p-1 w-1/4"></input>
+            <input name="age" type="number" onChange={e => updateForm("age", e)} className="bg-white text-black rounded-lg p-1 w-1/4"></input>
           </label>
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">

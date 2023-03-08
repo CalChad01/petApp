@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getPet, getOwner } from "../UserService";
+import { getPets, getOwners } from "../UserService";
 import nyanCat from '../Assets/nyanCat.gif';
 
 function Home() {
@@ -8,11 +8,11 @@ function Home() {
   const [ownerData, setOwnerData] = useState([]);
 
   const handleGetPetData = () => {
-    getPet().then(data => setPetData(data));
+    getPets().then(data => setPetData(data));
   }
 
   const handleGetOwnerData = () => {
-    getOwner().then(data => setOwnerData(data));
+    getOwners().then(data => setOwnerData(data));
   }
 
   return (
@@ -25,7 +25,7 @@ function Home() {
         <ul>
           {
           petData && petData.map(pet => (
-            <li key={pet.id}>Pet ID: {pet.id} Pet Breed: {pet.breed}</li>
+            <li key={pet.id}>Pet ID: {pet.id} Pet Name: {pet.name}</li>
           ))
           }
         </ul>
@@ -35,7 +35,7 @@ function Home() {
         <ul>
           {
           ownerData && ownerData.map(owner => (
-            <li key={owner.id}>Owner ID: {owner.id} Pet Breed: {owner.type}</li>
+            <li key={owner.id}>Owner ID: {owner.id} Owner Name: {owner.name}</li>
           ))
           }
         </ul>

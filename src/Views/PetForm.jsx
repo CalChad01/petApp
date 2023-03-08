@@ -45,6 +45,8 @@ function PetForm() {
 
     // generate unique ID for pet
     form.id = Math.floor(100000000000 + Math.random() * 900000000000);
+
+    console.log(form);
     
     // make fetch request
     createPet(form);
