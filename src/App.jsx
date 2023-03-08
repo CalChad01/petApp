@@ -13,7 +13,7 @@ import Match from './Views/Match';
 function App() {
 
   return (
-    <div className="bg-white absolute h-full w-full">
+    <div className="bg-white absolute h-full w-full overflow-hidden">
       <Router>
         
         <Header />
