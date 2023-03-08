@@ -4,7 +4,7 @@ const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 
 // GET Pet Data
-export async function getPet() {
+export async function getPets() {
   const response = await fetch(urlPet);
   const data = await response.json();
   return data;
@@ -29,7 +29,7 @@ export async function createPet(data) {
 }
 
 // GET Owner Data
-export async function getOwner() {
+export async function getOwners() {
   const response = await fetch(urlOwner);
   const data = await response.json();
   return data;

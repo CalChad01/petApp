@@ -1,21 +1,13 @@
 import haversine from 'haversine-distance';
-import { getCoords } from './UserService';
+import { getPets, getCoords, getOwners } from './UserService';
 
-const owner = JSON.parse('{"name":"Kali","travel":1000,"address":"1866 East Shore Drive Maplewood Minnesota 55109", "type":"Dog","otherPets":"Yes","smallChildren":"Yes","Size":"Large","Age":"Puppy","actLevel":1,"budget":500}');
-const pet1 = JSON.parse('{"name":"Bronco","address":"1325 31st street des moines Iowa", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"95","Age":9,"actLevel":2,"price":450}');
-const pet2 = JSON.parse('{"name":"Perfect","address":"1870 East shore dr maplewood mn 55109", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"95","Age":1,"actLevel":1,"price":450}');
-const pet3 = JSON.parse('{"name":"BAD","address":"352 gulfport court las vegas nv", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"10","Age":10,"actLevel":5,"price":1000}');
-const pet4 = JSON.parse('{"name":"Tester","address":"352 gulfport court las vegas nv", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"10","Age":10,"actLevel":5,"price":100000}');
-
-const pets = [pet1, pet2, pet3, pet4];
-
-function typeOfAnimal(pet) {
+function typeOfAnimal(pet, owner) {
   if (pet.type === owner.type) {
     pet_list.push(pet);
   }
 }
 
-function smallChildren(pet) {
+function smallChildren(pet, owner) {
   if (pet.smallChildren === 0 && owner.smallChildren === 1) {
     const index = pet_list.indexOf(pet);
     if (index !== -1) {
@@ -24,7 +16,7 @@ function smallChildren(pet) {
   }
 }
 
-function otherAnimals(pet) {
+function otherAnimals(pet, owner) {
   if (pet.otherAnimals === 0 && owner.otherPets === 1) {
     const index = pet_list.indexOf(pet);
     if (index !== -1) {
@@ -34,12 +26,12 @@ function otherAnimals(pet) {
 }
 
 function distanceLen(owner_ll, pet_ll) {
-  var distances=haversine(owner_ll,pet_ll)
+  var distances=haversine(owner_ll, pet_ll)
   //console.log("DISTANCE~~", distances)
   return distances
 }
 
-function maxDistance(lat_long_owner,lat_long_pet,owner,pet, score) {
+function maxDistance(lat_long_owner,lat_long_pet,owner, score) {
   const distance = distanceLen(lat_long_owner, lat_long_pet);
 
   if (distance < owner.travel) {
@@ -53,28 +45,28 @@ function maxDistance(lat_long_owner,lat_long_pet,owner,pet, score) {
 }
 
 function priceRange(pet, score, owner) {
-    if (pet["price"] < owner["budget"]) {
+    if (pet.price < owner.price) {
         score = score + 3;
-    } else if (pet["price"] < owner["budget"] + 100) {
+    } else if (pet.price < owner.budget + 100) {
         score = score + 2;
     }
     return score;
 }
     
 function activityLevel(pet, score, owner) {
-    if (owner["actLevel"] == pet["actLevel"]) {
+    if (owner.actLevel == pet.actLevel) {
         score = score + 3;
     }
-    if (owner["actLevel"] + 1 == pet["actLevel"]) {
+    if (owner.actLevel + 1 == pet.actLevel) {
         score = score + 2;
     }
-    if (owner["actLevel"] - 1 == pet["actLevel"]) {
+    if (owner.actLevel - 1 == pet.actLevel) {
         score = score + 2;
     }
-    if (owner["actLevel"] + 2 == pet["actLevel"]) {
+    if (owner.actLevel + 2 == pet.actLevel) {
         score = score + 1;
     }
-    if (owner["actLevel"] - 2 == pet["actLevel"]) {
+    if (owner.actLevel - 2 == pet.actLevel) {
         score = score + 1;
     }
     return score;
@@ -92,9 +84,9 @@ function age(pet, score, owner) {
         pet_age = 1;
     }
 
-    if (owner.age == "puppy") {
+    if (owner.age < 3) {
         owner_age = 0;
-    } else if (owner.age == "senior") {
+    } else if (owner.age > 7) {
         owner_age = 2;
     } else {
         owner_age = 1;
@@ -112,36 +104,26 @@ function age(pet, score, owner) {
     return score;
 }
 
-// function get_lat_and_long(x){
-//   const address = x["Location"];
-//   //console.log("address",address)
-//   //console.log("TESTING!")
-// // Define the URL for the API request
-//   const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(address)}&key=3ce1df84633c4ee69df601f0e7251810`;
-
-//   // Make a request to the API using fetch()
-//   return fetch(url)
-//     .then(response => response.json())
-//     .then(data => {
-//       // Extract the latitude and longitude from the API response
-//       const { lat, lng } = data.results[0].geometry;
-//       //console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-//       // Return an object containing the lat and lng values
-//       return { lat, lng };
-//     })
-//     .catch(error => console.error(error));
-// }
-
 // global pet list arrays
 let pet_list = [];
-
 let pet_high = [];
 let pet_med = [];
 let pet_low = [];
 
 export async function match() {
 
+  const owners = await getOwners();
+  const owner = owners[0];
+
   const lat_long_owner = await getCoords(owner);
+
+  // reset global arrays
+  pet_list = []
+  pet_high = []
+  pet_med = [];
+  pet_low = [];
+
+  const pets = await getPets();
 
   for (let i = 0; i < pets.length; i++) {
     // get next pet and initialize score
@@ -149,13 +131,13 @@ export async function match() {
     let score = 0;
 
     // check for type of animal
-    typeOfAnimal(pet);
-    if (pet_list.includes(pet)) {
+    typeOfAnimal(pet, owner);
+    if (pet_list.includes(pet, owner)) {
       // small children and other animals check
       if (pet_list.includes(pet)) {
-        smallChildren(pet);
+        smallChildren(pet, owner);
         if (pet_list.includes(pet)) {
-          otherAnimals(pet);
+          otherAnimals(pet, owner);
         }
       }
     }
@@ -167,8 +149,8 @@ export async function match() {
       score = priceRange(pet, score, owner);
       
       let lat_long_pet = await getCoords(pet);
-      let final_score = maxDistance(lat_long_owner, lat_long_pet, owner, pet, score);
-      console.log(pet.name, final_score);
+      let final_score = maxDistance(lat_long_owner, lat_long_pet, owner, score);
+      //console.log(pet.name, final_score);
 
       if (final_score < 5) {
         pet_low.push(pet);
@@ -182,4 +164,8 @@ export async function match() {
     console.log("high:", pet_high);
     console.log("med:", pet_med);
     console.log("low:", pet_low);
+
+    // const data = [pet_high, pet_med, pet_low];
+    // console.log(data);
+    return [pet_high, pet_med, pet_low];
 }

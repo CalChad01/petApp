@@ -5,10 +5,12 @@ function PetForm() {
 
   const [form, setFormVal] = useState({
     id: undefined,
+    name: "",
     type: "dog",
     age: undefined,
     weight: undefined,
     breed: "",
+    address: "",
     actLevel: 3,
     otherAnimals: 1,
     smallChildren: 1,
@@ -43,6 +45,8 @@ function PetForm() {
 
     // generate unique ID for pet
     form.id = Math.floor(100000000000 + Math.random() * 900000000000);
+
+    console.log(form);
     
     // make fetch request
     createPet(form);
@@ -58,6 +62,14 @@ function PetForm() {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 place-items-center">
       <input type="submit" value="Submit" className="bg-pink-500 text-white font-bold p-3 w-1/4 rounded-lg hover:duration-100 hover:scale-110 hover:bg-pink-600" />
         <div className="grid grid-cols-2 gap-3">
+          
+        <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
+            <span className="font-bold pr-3 pb-2">
+              Name:
+            </span>
+            <input name="contact" defaultValue={form.name} onChange={e => updateForm("name", e)} className="bg-white text-black rounded-lg p-1"></input>
+          </label>
+          
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
             <span className="font-bold pr-3 pb-2">
               Type:
@@ -88,6 +100,13 @@ function PetForm() {
               Breed:
             </span>
             <input name="breed" defaultValue={form.breed} onChange={e => updateForm("breed", e)} className="bg-white text-black rounded-lg p-1"></input>
+          </label>
+
+          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
+            <span className="font-bold pr-3 pb-2">
+              Address (Street Name Town/City State ZIP ):
+            </span>
+            <input name="contact" defaultValue={form.address} onChange={e => updateForm("address", e)} className="bg-white text-black rounded-lg p-1"></input>
           </label>
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
