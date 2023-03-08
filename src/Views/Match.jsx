@@ -36,7 +36,7 @@ function Match() {
         <ul>
           {
           ownerData && ownerData.map(owner => (
-            <li key={owner.id}>Owner Name: {owner.name} Owner Type: {owner.type} || Owner Age: {owner.age} || Small Children? {owner.smallChildren}  || Other Pets? {owner.otherPets} || Contact: {owner.contact}</li>
+            <li key={owner.id}>Name: {owner.name} || Type: {owner.type} || Age: {owner.age} || Small Children? {owner.smallChildren}  || Other Pets? {owner.otherPets} || Contact: {owner.contact}</li>
           ))
           }
         </ul>
