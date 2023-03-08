@@ -1,16 +1,7 @@
 import haversine from 'haversine-distance';
 import { getPets, getCoords, getOwners } from './UserService';
 
-// const owner = JSON.parse('{"name":"Kali","travel":1000,"address":"1866 East Shore Drive Maplewood Minnesota 55109", "type":"dog","otherPets":1,"smallChildren":1,"Size":"Large","Age":2,"actLevel":1,"budget":500}');
-// const pet1 = JSON.parse('{"name":"Bronco","address":"1325 31st street des moines Iowa", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"95","Age":9,"actLevel":2,"price":450}');
-// const pet2 = JSON.parse('{"name":"Perfect","address":"1870 East shore dr maplewood mn 55109", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"95","Age":1,"actLevel":1,"price":450}');
-// const pet3 = JSON.parse('{"name":"BAD","address":"352 gulfport court las vegas nv", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"10","Age":10,"actLevel":5,"price":1000}');
-// const pet4 = JSON.parse('{"name":"Tester","address":"352 gulfport court las vegas nv", "type":"Dog","pet_breed":"Pit Bull","smallChildren":"Yes","otherAnimals":"Yes","Weight":"10","Age":10,"actLevel":5,"price":100000}');
-
-
-
 function typeOfAnimal(pet, owner) {
-  console.log(pet.type, owner.type);
   if (pet.type === owner.type) {
     pet_list.push(pet);
   }
