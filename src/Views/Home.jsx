@@ -20,7 +20,7 @@ function Home() {
       <div className="flex items-center">
         <img src={nyanCat} className="w-64 animate-[fly_6s_forwards_1]"></img>
       </div>
-      <div>
+      {/* <div>
         <button onClick={handleGetPetData} className="bg-pink-500 text-white font-bold p-3 w-1/4 rounded-lg hover:duration-100 hover:scale-110 hover:bg-pink-600">Get Pet Data</button>
         <ul>
           {
@@ -39,7 +39,7 @@ function Home() {
           ))
           }
         </ul>
-      </div>
+      </div> */}
     </div>
   )
 }

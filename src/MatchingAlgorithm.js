@@ -124,8 +124,6 @@ export async function match() {
   pet_low = [];
 
   const pets = await getPets();
-  console.log(pets);
-  console.log(pets[0]);
 
   for (let i = 0; i < pets.length; i++) {
     // get next pet and initialize score
