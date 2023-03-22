@@ -15,7 +15,7 @@ function OwnerForm() {
     smallChildren: 1,
     contact: "",
     budget: undefined,
-  })
+  });
 
   const updateForm = (formKey, e) => {
     let newVal;
@@ -61,7 +61,7 @@ function OwnerForm() {
             <span className="font-bold pr-3 pb-2">
               Name:
             </span>
-            <input name="contact" defaultValue={form.name} onChange={e => updateForm("name", e)} className="bg-white text-black rounded-lg p-1"></input>
+            <input name="name" defaultValue={form.name} onChange={e => updateForm("name", e)} className="bg-white text-black rounded-lg p-1"></input>
           </label>
           
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
