@@ -15,7 +15,7 @@ function OwnerForm() {
     smallChildren: 1,
     contact: "",
     budget: undefined,
-  })
+  });
 
   const updateForm = (formKey, e) => {
     let newVal;
