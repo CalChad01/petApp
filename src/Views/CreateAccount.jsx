@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function CreateAccount() {
@@ -6,8 +6,8 @@ function CreateAccount() {
   const [form, setFormVal] = useState({
     id: undefined,
     username: "",
-    password: "",
     email: "",
+    password: "",
   });
 
   const updateForm = (formKey, e) => {
@@ -34,36 +34,52 @@ function CreateAccount() {
   }
 
   return (
-    <div>
-      <form class="form form--hidden" id="createAccount">
-            <h1 class="form__title">Create Account</h1>
-            <div class="form__message form__message--error"></div>
-            <div class="form__input-group">
-                <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username"/>
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Password"/>
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Confirm password"/>
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Email Address"/>
-                <div class="form__input-error-message"></div>
-            </div>
-            <button class="form__button" type="submit">Continue</button>
-        </form>
-        <Link
-          to="/login"
-          className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4"
-        >
-          <p>
-            Already have an account? Sign in
-          </p>
-        </Link>
+    <div className="grid gap-2 place-items-center w-fit text-white p-1 shadow-xl bg-violet-500">
+      <h1 className="text-center font-bold text-4xl underline">
+        Create Account
+      </h1>
+
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 place-items-center">
+        <div className="grid grid-cols-2 gap-3">
+          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
+            <span className="font-bold pr-3 pb-2">
+              UserName:
+            </span>
+            <input name="username" defaultValue={form.username} onChange={e => updateForm("username", e)} className="bg-white text-black rounded-lg p-1"></input>
+          </label>
+
+          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
+            <span className="font-bold pr-3 pb-2">
+              Email:
+            </span>
+            <input name="email" defaultValue={form.email} onChange={e => updateForm("email", e)} className="bg-white text-black rounded-lg p-1"></input>
+          </label>
+
+          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
+            <span className="font-bold pr-3 pb-2">
+              Password:
+            </span>
+            <input name="password" defaultValue={form.password} onChange={e => updateForm("password", e)} className="bg-white text-black rounded-lg p-1"></input>
+          </label>
+
+          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
+            <span className="font-bold pr-3 pb-2">
+              Confirm Password:
+            </span>
+            <input name="confirmPassword" defaultValue="" onChange={e => confirmPassword(e)} className="bg-white text-black rounded-lg p-1"></input>
+          </label>
+
+        </div>
+        <input type="submit" value="Continue" className="bg-pink-500 text-white font-bold p-3 w-1/4 rounded-lg hover:duration-100 hover:scale-110 hover:bg-pink-600" />
+      </form>
+      <Link
+        to="/login"
+        className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4"
+      >
+        <p>
+          Already have an account? Sign in
+        </p>
+      </Link>
     </div>
   )
 

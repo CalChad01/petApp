@@ -22,7 +22,7 @@ function App() {
         <Header />
 
         {/* Main Content */}
-        <div>
+        <div className="flex justify-center">
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route exact path="/match" element={<Match />}></Route>
