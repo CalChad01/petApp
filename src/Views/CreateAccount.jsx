@@ -13,7 +13,7 @@ function CreateAccount() {
   const updateForm = (formKey, e) => {
     // update values in form
 
-    newVal = e.target.value;
+    let newVal = e.target.value;
 
     setFormVal({
       ...form,
@@ -74,7 +74,7 @@ function CreateAccount() {
       </form>
       <Link
         to="/login"
-        className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4"
+        className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4 rounded-lg"
       >
         <p>
           Already have an account? Sign in

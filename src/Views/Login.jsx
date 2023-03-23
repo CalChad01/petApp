@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 function Login() {
 
-  const [form, setForm] = useState({
+  const [form, setFormVal] = useState({
     username: "",
     password: "",
-  })
+  });
 
   const updateForm = (formKey, e) => {
     // update values in form
 
-    newVal = e.target.value;
+    let newVal = e.target.value;
 
     setFormVal({
       ...form,
@@ -21,6 +21,9 @@ function Login() {
   const handleLogin = (e) => {
 
     e.preventDefault();
+
+    console.log('username: ', form.username);
+    console.log('password ', form.password);
     
   }
 
@@ -51,13 +54,13 @@ function Login() {
       </form>
         <Link
           to="/forgotPassword"
-          className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4 font-bold"
+          className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4 rounded-lg font-bold"
         >
           Forgot password?
         </Link>
         <Link
           to="/createAccount"
-          className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4 font-bold"
+          className="hover:duration-100 hover:scale-110 hover:bg-pink-400 hover:text-gray-200 block p-4 rounded-lg font-bold"
         >
           Don't have an account? Create account
         </Link>
