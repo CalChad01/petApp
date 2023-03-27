@@ -2,6 +2,7 @@
 
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
+const urlAccount = `https://pluc2254u4.execute-api.ca-central-1.amazonaws.com/accounts`;
 
 // GET Pet Data
 export async function getPets() {
