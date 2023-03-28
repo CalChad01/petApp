@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Login() {
 
   const [form, setFormVal] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -22,7 +22,7 @@ function Login() {
 
     e.preventDefault();
 
-    console.log('username: ', form.username);
+    console.log('email: ', form.email);
     console.log('password ', form.password);
     
   }
@@ -37,9 +37,9 @@ function Login() {
         <div className="grid grid-cols-2 gap-3">
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
             <span className="font-bold pr-3 pb-2">
-              UserName:
+              Email:
             </span>
-            <input name="username" defaultValue={form.username} onChange={e => updateForm("username", e)} className="bg-white text-black rounded-lg p-1"></input>
+            <input name="email" type="email" defaultValue={form.email} onChange={e => updateForm("email", e)} className="bg-white text-black rounded-lg p-1"></input>
           </label>
 
           <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
