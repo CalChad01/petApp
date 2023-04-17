@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function CreateAccount() {
@@ -12,7 +12,7 @@ function CreateAccount() {
     address: "",
   });
 
-  let passwordMatch = "";
+  const [passwordMatch, setPasswordMatch] = useState("");
 
   const updateForm = (formKey, e) => {
     // update values in form
@@ -37,18 +37,6 @@ function CreateAccount() {
     // generate ID
     form.id = Math.floor(100000000000 + Math.random() * 900000000000);
     // do password security stuff
-  }
-
-  const confirmPassword = () => {
-    if (form.password == passwordMatch) {
-      console.log('Passwords match');
-      return true;
-    } else
-      return false;
-  }
-
-  const updatePasswordMatch = (e) => {
-    passwordMatch = e.target.value;
   }
 
   return (
@@ -78,13 +66,6 @@ function CreateAccount() {
               Password:
             </span>
             <input name="password" defaultValue={form.password} onChange={e => updateForm("password", e)} className="bg-white text-black rounded-lg p-1"></input>
-          </label>
-
-          <label className="hover:duration-100 hover:scale-110 hover:bg-violet-600 grid place-items-center p-3">
-            <span className="font-bold pr-3 pb-2">
-              Confirm Password:
-            </span>
-            <input name="confirmPassword" defaultValue="" onChange={e => updatePasswordMatch(e)} className="bg-white text-black rounded-lg p-1"></input>
           </label>
 
         </div>
