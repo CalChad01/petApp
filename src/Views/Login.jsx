@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Login() {
 
   const [form, setFormVal] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -22,7 +22,7 @@ function Login() {
 
     e.preventDefault();
 
-    console.log('username: ', form.username);
+    console.log('email: ', form.email);
     console.log('password ', form.password);
     
   }
