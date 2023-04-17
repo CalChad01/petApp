@@ -30,7 +30,7 @@ function Login() {
   return (
     <div className="min-h-screen flex items-start py-10">  
       <div className="grid gap-2 place-items-center w-fit justify-self-center text-blue-900 text-opacity-75  p-1 shadow-2xl bg-white">
-        <h1 className="text-center font-bold text-4xl underline">
+        <h1 className="text-center font-bold text-4xl">
           Sign In
         </h1>
 
