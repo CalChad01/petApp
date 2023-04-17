@@ -30,21 +30,21 @@ function Login() {
   return (
     <div className="min-h-screen flex items-start py-10">  
       <div className="grid gap-2 place-items-center w-fit justify-self-center text-blue-900 text-opacity-75  p-1 shadow-2xl bg-white">
-        <h1 className="text-center font-bold text-4xl">
+        <h1 className="text-center font-bold text-4xl select-none">
           Sign In
         </h1>
 
         <form onSubmit={handleLogin} className="grid grid-cols-1 place-items-center">
           <div className="grid grid-cols-2 gap-3">
             <label className="grid place-items-center p-3">
-              <span className="font-bold pr-3 pb-2">
+              <span className="font-bold pr-3 pb-2 select-none">
                 Username:
               </span>
               <input name="username" defaultValue={form.username} onChange={e => updateForm("username", e)} className="text-black rounded-md p-1 border-2 border-black border-opacity-25 bg-slate-100 hover:bg-slate-200"></input>
             </label> 
 
             <label className="grid place-items-center p-3">
-              <span className="font-bold pr-3 pb-2">
+              <span className="font-bold pr-3 pb-2 select-none">
                 Password:
               </span>
               <input name="password" defaultValue={form.password} onChange={e => updateForm("password", e)} className="text-black rounded-md p-1 border-2 border-black border-opacity-25 bg-slate-100 hover:bg-slate-200"></input>
@@ -59,8 +59,8 @@ function Login() {
           >
             Forgot password?
           </Link>
-          <div className="grid grid-cols-2">
-            <p className="block p-2">
+          <div className="grid grid-cols-2 justify-items-center">
+            <p className="block p-2 select-none">
               Don't have an account?
             </p>
             <Link
