@@ -19,6 +19,7 @@ function PetForm() {
     disabled: "no",
     health: "",
     price: undefined,
+    s3uri: undefined,
   })
 
   const updateForm = (formKey, e) => {

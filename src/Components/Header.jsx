@@ -5,9 +5,9 @@ import { faHouse, faPaw, faDog, faUser, faPen } from '@fortawesome/free-solid-sv
 
 function Header() {
   return (
-    <header className="h-20 bg-pink-300 font-sans text-white text-4xl flex items-center shadow-xl">
+    <header className="h-20 bg-cyan-500 font-sans text-white text-4xl flex items-center shadow-xl">
       <span className="font-bold px-3 border-r-4 border-white">
-        petApp
+        Pet Find-inator
       </span>
       <ul className="flex items-center">
         <li className="px-3">
