@@ -1,4 +1,4 @@
-# Compander
+# petApp
 
 
 ## __Members__: Jackson Buchmeyer, Calvin Chadima, Chi Dang, Kali Zerwas
@@ -7,12 +7,14 @@
 ## Website Link:
 https://main.d1hxa7tkjmc1rx.amplifyapp.com/
 
-## Install Instructions:
+## For Development:
+
+### Install Instructions:
 1. Clone the repository.
 2. Run ```npm install``` or ```npm i``` to install node modules.
 3. Run ```npm run dev``` to launch local server for development.
 
-## Pull Request Instructions:
+### Pull Request Instructions:
 1. Make sure to run ```npm run build``` to compile the web app before committing.
 2. Commit and push to your **separate** branch (**NEVER THE MAIN BRANCH**).
 3. Make pull request.
