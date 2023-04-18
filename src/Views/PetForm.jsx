@@ -54,7 +54,7 @@ function PetForm() {
   }
 
   return(
-    <div className="grid gap-2 place-items-center w-fit text-white p-1 shadow-xl bg-violet-500">
+    <div className="grid gap-2 place-items-center w-fit justify-self-center text-blue-900 text-opacity-75  p-1 shadow-2xl bg-white">
 
       <h1 className="text-center font-bold text-4xl underline">
         Pet
