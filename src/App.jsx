@@ -16,7 +16,7 @@ import ForgotPassword from './Views/ForgotPassword';
 function App() {
 
   return (
-    <div className="bg-slate-100 h-screen w-screen overflow-hidden">
+    <div className="bg-slate-100 h-screen w-screen overflow-x-hidden">
       <Router>
         
         <Header />
