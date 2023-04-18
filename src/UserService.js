@@ -68,3 +68,8 @@ export async function getCoords(user) {
 
   return { lat, lng };
 }
+
+// POST image
+export async function postImage() {
+  
+}
