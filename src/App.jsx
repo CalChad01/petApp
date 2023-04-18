@@ -25,9 +25,9 @@ function App() {
         <div className="flex justify-center">
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/match" element={<Match />}></Route>
+            {/* <Route exact path="/match" element={<Match />}></Route> */}
             <Route exact path="/petForm" element={<PetForm />}></Route>
-            <Route exact path="/ownerForm" element={<OwnerForm />}></Route>
+            {/* <Route exact path="/ownerForm" element={<OwnerForm />}></Route> */}
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/createAccount" element={<CreateAccount />}></Route>
             <Route exact path="/forgotPassword" element={<ForgotPassword />}></Route>
