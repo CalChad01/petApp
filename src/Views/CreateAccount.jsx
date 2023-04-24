@@ -24,19 +24,22 @@ function CreateAccount() {
     });
   }
 
+  const checkInfo = () => {
+
+
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
     // check to make sure all form values have something in them
-    
-    // check that passwords match
-    if (!confirmPassword()) {
-      console.log('Passwords do not match')
-      return false;
-    }
-    // generate ID
-    form.id = Math.floor(100000000000 + Math.random() * 900000000000);
-    // do password security stuff
+    if (true) {
+      // generate ID
+      form.id = Math.floor(100000000000 + Math.random() * 900000000000);
+      // do password security stuff
+      console.log('send to pet')
+      return 
+    } 
   }
 
   return (
@@ -70,7 +73,8 @@ function CreateAccount() {
             </label>
 
           </div>
-          <button type="submit" className="bg-blue-600 text-white font-bold p-3 w-fit rounded-lg hover:duration-100 hover:scale-105 hover:bg-blue-400">Continue</button>
+          <button type="submit" className="bg-blue-600 text-white font-bold p-3 w-fit rounded-lg hover:duration-100 hover:scale-105 hover:bg-blue-400"><Link to="/petForm">Continue</Link>
+          </button>
         </form>
         <div className="grid grid-cols-2 justify-items-center">
           <p className="block p-2 select-none">

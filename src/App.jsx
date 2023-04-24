@@ -16,7 +16,7 @@ import ForgotPassword from './Views/ForgotPassword';
 function App() {
 
   return (
-    <div className="bg-slate-100 h-full w-full overflow-hidden">
+    <div className="bg-slate-100 h-screen w-screen overflow-x-hidden">
       <Router>
         
         <Header />
@@ -25,9 +25,9 @@ function App() {
         <div className="flex justify-center">
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/match" element={<Match />}></Route>
+            {/* <Route exact path="/match" element={<Match />}></Route> */}
             <Route exact path="/petForm" element={<PetForm />}></Route>
-            <Route exact path="/ownerForm" element={<OwnerForm />}></Route>
+            {/* <Route exact path="/ownerForm" element={<OwnerForm />}></Route> */}
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/createAccount" element={<CreateAccount />}></Route>
             <Route exact path="/forgotPassword" element={<ForgotPassword />}></Route>

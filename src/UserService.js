@@ -3,6 +3,9 @@
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 const urlAccount = `https://pluc2254u4.execute-api.ca-central-1.amazonaws.com/accounts`;
+const urlImages = `https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/`;
+
+// const s3uriExample = `s3://testingbucketforcs191/{filename}.jpg`
 
 // GET Pet Data
 export async function getPets() {
@@ -54,6 +57,21 @@ export async function createOwner(data) {
   console.log(content);
 }
 
+// PUT image
+export async function putImages(formData) {
+  const response = await fetch(`${urlImages}${formData.name}`, {
+    method: 'PUT',
+    body: formData,
+    mode: 'cors',
+    headers: 
+    {
+      'Content-Type': 'image/jpeg',
+    },
+  });
+  console.log(response)
+
+}
+
 // GET lattitude and longitude
 export async function getCoords(user) {
   const address = user.address;
@@ -67,3 +85,4 @@ export async function getCoords(user) {
 
   return { lat, lng };
 }
+
