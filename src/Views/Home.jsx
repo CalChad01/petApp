@@ -6,17 +6,19 @@ import nyanCat from '../Assets/nyanCat.gif';
 
 function Home() {
 
-  const [files, setFile] = useState();
+  const [file, setFile] = useState();
 
   const handleChange = (e) => {
-    setFile(e.target.files);
+    const tempFile = e.target.files[0];
+    const tempID = Math.floor(1000000000 + Math.random() * 9000000000);
+
+    const newFile = new File([tempFile], `${tempID}.jpg`);
+    setFile(newFile);
   }
 
   const handleUpload = () => {
 
-    console.log(files);
-
-    putImages(files);
+    putImages(file);
 
   }
 
