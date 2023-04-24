@@ -3,7 +3,7 @@
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 const urlAccount = `https://pluc2254u4.execute-api.ca-central-1.amazonaws.com/accounts`;
-const urlImages = `https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/%7Bfilename%7D`
+const urlImages = `https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/`
 
 // GET Pet Data
 export async function getPets() {
@@ -70,6 +70,19 @@ export async function getCoords(user) {
 }
 
 // POST image
-export async function postImage() {
-  
+export async function putImages(formData) {
+  const response = await fetch(urlImages, {
+    method: 'PUT',
+    body: formData,
+    mode: 'cors',
+    headers: 
+    {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Headers': 'Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token',
+    },
+  });
+  const content = await response.json();
+  console.log(content);
 }

@@ -1,23 +1,27 @@
 import { useState } from "react";
-import { getPets, getOwners } from "../UserService";
+import { putImages } from "../UserService";
 import nyanCat from '../Assets/nyanCat.gif';
 
 function Home() {
 
-  // return (
-  //   <div>
-  //     {/* <div className="flex items-center">
-  //       <img src={nyanCat} className="w-64 animate-[fly_6s_forwards_1]"></img>
-  //     </div> */}
-      
-  //   </div>
-  // )
+  const [files, setFile] = useState();
 
-  // image uploading test
+  const handleChange = (e) => {
+    setFile(e.target.files);
+  }
+
+  const handleUpload = () => {
+
+    console.log(files);
+
+    putImages(files);
+
+  }
 
   return (
     <div>
-      <input type="file"></input>
+      <input type="file" onChange={handleChange}></input>
+      <button onClick={handleUpload} className="bg-slate-500 border-black border hover:scale-110  text-white">Upload</button>
     </div>
   )
   
