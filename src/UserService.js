@@ -57,8 +57,22 @@ export async function createOwner(data) {
   console.log(content);
 }
 
+// GET image
+// still needs to be fully implemented correctly
+export async function getImage(imgData) {
+  const response = await fetch (`${urlImages}${imgData}`, {
+    method: 'GET',
+    mode: 'cors',
+    headers:
+    {
+      'Content-Type': 'image/jpeg',
+    },
+  });
+  console.log(response);
+}
+
 // PUT image
-export async function putImages(formData) {
+export async function putImage(formData) {
   const response = await fetch(`${urlImages}${formData.name}`, {
     method: 'PUT',
     body: formData,
@@ -69,7 +83,6 @@ export async function putImages(formData) {
     },
   });
   console.log(response)
-
 }
 
 // GET lattitude and longitude
