@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { putImages } from "../UserService";
+import { putImage } from "../UserService";
 import nyanCat from '../Assets/nyanCat.gif';
 
 // https://youtu.be/9hCTdUIwmhA <-- file uploading with React video
@@ -25,7 +25,7 @@ function Home() {
 
   const handleUpload = () => {
 
-    // putImages(file);
+    // putImage(file);
 
   }
 
