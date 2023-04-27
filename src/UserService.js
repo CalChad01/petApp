@@ -60,7 +60,7 @@ export async function createOwner(data) {
 // GET image
 // still needs to be fully implemented correctly
 export async function getImage(imgData) {
-  const response = await fetch (`${urlImages}${imgData}`, {
+  const response = await fetch (`${urlImages + imgData}`, {
     method: 'GET',
     mode: 'cors',
     headers:
@@ -69,10 +69,12 @@ export async function getImage(imgData) {
     },
   });
   console.log(response);
+  return response;
 }
 
 // PUT image
 export async function putImage(formData) {
+  console.log(formData.name);
   const response = await fetch(`${urlImages}${formData.name}`, {
     method: 'PUT',
     body: formData,
@@ -80,6 +82,9 @@ export async function putImage(formData) {
     headers: 
     {
       'Content-Type': 'image/jpeg',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Headers': 'Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token',
     },
   });
   console.log(response)
