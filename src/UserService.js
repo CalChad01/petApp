@@ -65,7 +65,7 @@ export async function getImage(imgData) {
     mode: 'cors',
     headers:
     {
-      'Content-Type': 'image/jpeg',
+      'Accept': 'application/json',
     },
   });
   console.log(response);
