@@ -40,8 +40,6 @@ function Home() {
   const handleGetImage = async () => {
 
     setImage(await getImage(`2643881923.jpg`));
-    // setImage(`data:image/*;base64,${await getImage(`6934663841.jpg`)}`);
-    // setImage(URL.createObjectURL(`https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/6934663841.jpg`));
 
   }
 
@@ -51,8 +49,8 @@ function Home() {
       <button onClick={handleUpload} className="bg-slate-500 border-black border hover:scale-110  text-white">Upload</button>
 
       <button onClick={handleGetImage} className="bg-slate-500 border-black border hover:scale-110  text-white">Get Image</button>
-      {image ? <img src="" className="w-1/2" /> : null}
-      {/* <img src="https://testingbucketforcs191.s3.ca-central-1.amazonaws.com/2643881923.jpg" className="w-1/4" /> */}
+      {image ? <img src={image} className="w-1/2" /> : null}
+      {/* <img src="https://testingbucketforcs191.s3-ca-central-1.amazonaws.com/dev/2643881923.jpg" className="w-1/4" /> */}
     </div>
   )
 }

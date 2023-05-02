@@ -1,8 +1,8 @@
 // API Call Functions
 
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
-
-// import { defaultProvider } from "@aws-sdk/credential-provider-node";
+import { PutObjectCommand, GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { Buffer } from "buffer";
 
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
@@ -68,19 +68,32 @@ export async function createOwner(data) {
 export async function getImage(imgData) {
   const client = new S3Client({
     region: 'ca-central-1',
-    accessKeyId: '',
-    secretAccessKey: '',
+    credentials: {
+      accessKeyId: 'AKIAY4ERSBRS6NVKSFON',
+      secretAccessKey: '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',
+    },
+
   });
   const command = new GetObjectCommand({
     Bucket: 'testingbucketforcs191',
     Key: imgData,
+  });
+  const url = await getSignedUrl(client, command, { expiresIn: 3600 });
+  console.log(url);
 
-  })
+  return url;
 
-  const response = await client.send(command);
+  // const response = await client.send(command);
 
-  const str = await response.Body.transformToString();
-  console.log(str);
+  // const str = await response.Body.transformToString();
+  // console.log(str);
+  // console.log(response.Body);
+
+  // const buffer = response.arrayBuffer();
+
+  // const base64string = Buffer.from(buffer, 'binary').toString('base64');
+  // return "data:image/jpeg;base64," + base64string;
+
   // const response = await fetch (`${urlGETImages + imgData}`, {
   //   method: 'GET',
   //   mode: 'cors',
@@ -109,6 +122,7 @@ export async function putImage(formData) {
       // 'Access-Control-Allow-Headers': 'Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token',
     },
   });
+  
   console.log(response);
 }
 
