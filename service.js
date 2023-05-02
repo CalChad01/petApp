@@ -67,14 +67,6 @@ export async function createOwner(data) {
   console.log(content);
 }
 
-const client = new S3Client({
-  region: 'ca-central-1',
-  credentials: {
-    accessKeyId: 'AKIAY4ERSBRS6NVKSFON',
-    secretAccessKey: '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',
-  },
-});
-
 ///////////////////////////////////////////////////////////////////////////
 
 // GET image
