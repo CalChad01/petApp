@@ -1,11 +1,17 @@
 // API Call Functions
 
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+
+// import { defaultProvider } from "@aws-sdk/credential-provider-node";
+
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 const urlAccount = `https://pluc2254u4.execute-api.ca-central-1.amazonaws.com/accounts`;
-const urlImages = `https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/`;
+const urlPUTImages = `https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/`;
+const urlGETImages = `https://testingbucketforcs191.s3.ca-central-1.amazonaws.com/`;
 
 // const s3uriExample = `s3://testingbucketforcs191/{filename}.jpg`
+// const s3uriLink = https://testingbucketforcs191.s3.amazonaws.com/{filename}.jpg
 
 // GET Pet Data
 export async function getPets() {
@@ -60,34 +66,50 @@ export async function createOwner(data) {
 // GET image
 // still needs to be fully implemented correctly
 export async function getImage(imgData) {
-  const response = await fetch (`${urlImages + imgData}`, {
-    method: 'GET',
-    mode: 'cors',
-    headers:
-    {
-      'Accept': 'application/json',
-    },
+  const client = new S3Client({
+    region: 'ca-central-1',
+    accessKeyId: '',
+    secretAccessKey: '',
   });
-  console.log(response);
-  return response;
+  const command = new GetObjectCommand({
+    Bucket: 'testingbucketforcs191',
+    Key: imgData,
+
+  })
+
+  const response = await client.send(command);
+
+  const str = await response.Body.transformToString();
+  console.log(str);
+  // const response = await fetch (`${urlGETImages + imgData}`, {
+  //   method: 'GET',
+  //   mode: 'cors',
+  //   headers:
+  //   {
+  //     'Content-Type': 'image/jpeg' 
+  //   },
+  //   redirect: 'follow',
+  // });
+  // console.log(response.body);
+  // const url = URL.createObjectURL(response.body);
 }
 
 // PUT image
 export async function putImage(formData) {
   console.log(formData.name);
-  const response = await fetch(`${urlImages}${formData.name}`, {
+  const response = await fetch(`${urlPUTImages + formData.name}`, {
     method: 'PUT',
     body: formData,
     mode: 'cors',
     headers: 
     {
       'Content-Type': 'image/jpeg',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
-      'Access-Control-Allow-Headers': 'Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token',
+      // 'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Credentials': true,
+      // 'Access-Control-Allow-Headers': 'Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token',
     },
   });
-  console.log(response)
+  console.log(response);
 }
 
 // GET lattitude and longitude

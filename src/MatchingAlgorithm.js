@@ -1,5 +1,5 @@
 import haversine from 'haversine-distance';
-import { getPets, getCoords, getOwners } from './UserService';
+import { getPets, getCoords, getOwners } from '../service';
 
 function typeOfAnimal(pet, owner) {
   if (pet.type === owner.type) {

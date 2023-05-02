@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getImage, putImage } from "../UserService";
+import { getImage, putImage } from "../../service";
 import nyanCat from '../Assets/nyanCat.gif';
 
 // https://youtu.be/9hCTdUIwmhA <-- file uploading with React video
@@ -14,15 +14,19 @@ function Home() {
   const handleChange = (e) => {
 
     // set image state to display preview image
+    console.log(URL.createObjectURL(e.target.files[0]));
     setImage(URL.createObjectURL(e.target.files[0]));
 
     // modify file with new file ID
     const tempFile = e.target.files[0];
-    console.log(file);
+    console.log(tempFile);
     const tempID = Math.floor(1000000000 + Math.random() * 9000000000);
 
     const newFile = new File([tempFile], `${tempID}.jpg`);
     setFile(newFile);
+    console.log(newFile);
+
+    setImage(URL.createObjectURL(newFile));
   }
 
   const handleUpload = () => {
@@ -32,15 +36,12 @@ function Home() {
   }
 
   // test image:
-  // `6934663841.jpg`
-  const handleGetImage = () => {
+  // `2643881923.jpg`
+  const handleGetImage = async () => {
 
-    const imageFile = new File(getImage(`6934663841.jpg`), `6934663841.jpg`, {
-      type: "image/jpeg",
-      lastModified: Date.now()
-    });
-
-    setImage(URL.createObjectURL(imageFile));
+    setImage(await getImage(`2643881923.jpg`));
+    // setImage(`data:image/*;base64,${await getImage(`6934663841.jpg`)}`);
+    // setImage(URL.createObjectURL(`https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/6934663841.jpg`));
 
   }
 
@@ -50,8 +51,8 @@ function Home() {
       <button onClick={handleUpload} className="bg-slate-500 border-black border hover:scale-110  text-white">Upload</button>
 
       <button onClick={handleGetImage} className="bg-slate-500 border-black border hover:scale-110  text-white">Get Image</button>
-      {image ? <img src={image} className="w-1/4" /> : null}
-      
+      {image ? <img src="" className="w-1/2" /> : null}
+      {/* <img src="https://testingbucketforcs191.s3.ca-central-1.amazonaws.com/2643881923.jpg" className="w-1/4" /> */}
     </div>
   )
 }
