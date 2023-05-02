@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { putImage } from "../UserService";
-import nyanCat from '../Assets/nyanCat.gif';
+import { putImage, getImage } from "../../service";
+
 
 // https://youtu.be/9hCTdUIwmhA <-- file uploading with React video
 
@@ -16,17 +16,24 @@ function Home() {
 
     // modify file with new file ID
     const tempFile = e.target.files[0];
-    console.log(file);
+    console.log(tempFile);
     const tempID = Math.floor(1000000000 + Math.random() * 9000000000);
 
     const newFile = new File([tempFile], `${tempID}.jpg`);
     setFile(newFile);
+    console.log(newFile);
   }
 
   const handleUpload = () => {
 
-    // putImage(file);
+    putImage(file);
 
+  }
+
+  // test file:
+  // "6817869341.jpg"
+  const handleGetImage = async () => {
+    setImage(await getImage("6817869341.jpg"))
   }
 
   return (
@@ -34,6 +41,7 @@ function Home() {
       <input type="file" accept="image/*" onChange={handleChange}></input>
       <button onClick={handleUpload} className="bg-slate-500 border-black border hover:scale-110  text-white">Upload</button>
       {image ? <img src={image} className="w-1/4" /> : null}
+      <button onClick={handleGetImage} className="bg-slate-500 border-black border hover:scale-110  text-white">Get</button>
       
     </div>
   )

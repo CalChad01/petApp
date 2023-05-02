@@ -1,11 +1,15 @@
 // API Call Functions
 
+import { S3Client, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+// import 'dotenv/config.js';
+
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 const urlAccount = `https://pluc2254u4.execute-api.ca-central-1.amazonaws.com/accounts`;
-const urlImages = `https://riblnair97.execute-api.ca-central-1.amazonaws.com/dev/testingbucketforcs191/`;
 
-// const s3uriExample = `s3://testingbucketforcs191/{filename}.jpg`
+///////////////////////////////////////////////////////////////////////////
 
 // GET Pet Data
 export async function getPets() {
@@ -32,6 +36,8 @@ export async function createPet(data) {
   console.log(content);
 }
 
+///////////////////////////////////////////////////////////////////////////
+
 // GET Owner Data
 export async function getOwners() {
   const response = await fetch(urlOwner);
@@ -57,33 +63,46 @@ export async function createOwner(data) {
   console.log(content);
 }
 
+///////////////////////////////////////////////////////////////////////////
+
+// initialize s3 client
+const client = new S3Client({
+  region: 'ca-central-1',
+  credentials: {
+    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY,
+    secretAccessKey: import.meta.env.VITE_AWS_SECRET_KEY,
+  },
+});
+
 // GET image
-// still needs to be fully implemented correctly
-export async function getImage(imgData) {
-  const response = await fetch (`${urlImages}${imgData}`, {
-    method: 'GET',
-    mode: 'cors',
-    headers:
-    {
-      'Content-Type': 'image/jpeg',
-    },
+export async function getImage(imgKey) {
+
+  const command = new GetObjectCommand({
+    Bucket: 'testingbucketforcs191',
+    Key: imgKey,
   });
-  console.log(response);
+  const url = await getSignedUrl(client, command, { expiresIn: 3600 });
+  console.log(url);
+
+  return url;
 }
 
 // PUT image
-export async function putImage(formData) {
-  const response = await fetch(`${urlImages}${formData.name}`, {
-    method: 'PUT',
-    body: formData,
-    mode: 'cors',
-    headers: 
-    {
-      'Content-Type': 'image/jpeg',
-    },
-  });
-  console.log(response)
+export async function putImage(imgData) {
+  console.log(imgData);
+  const params = {
+    Bucket: 'testingbucketforcs191',
+    Key: imgData.name,
+    Body: imgData,
+    ContentType: 'image/jpeg',
+  }
+  
+  const command = new PutObjectCommand(params);
+
+  client.send(command);
 }
+
+///////////////////////////////////////////////////////////////////////////
 
 // GET lattitude and longitude
 export async function getCoords(user) {

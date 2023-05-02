@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { match } from '../MatchingAlgorithm';
-import { getOwners } from '../UserService';
+import { getOwners } from '../../service';
 
 function Match() {
 

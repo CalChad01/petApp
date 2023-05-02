@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createOwner } from '../UserService';
+import { createOwner } from '../../service';
 
 function OwnerForm() {
 
