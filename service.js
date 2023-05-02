@@ -1,6 +1,6 @@
 // API Call Functions
 
-import { PutObjectCommand, GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { S3Client, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { Buffer } from "buffer";
 
@@ -12,6 +12,8 @@ const urlGETImages = `https://testingbucketforcs191.s3.ca-central-1.amazonaws.co
 
 // const s3uriExample = `s3://testingbucketforcs191/{filename}.jpg`
 // const s3uriLink = https://testingbucketforcs191.s3.amazonaws.com/{filename}.jpg
+
+///////////////////////////////////////////////////////////////////////////
 
 // GET Pet Data
 export async function getPets() {
@@ -38,6 +40,8 @@ export async function createPet(data) {
   console.log(content);
 }
 
+///////////////////////////////////////////////////////////////////////////
+
 // GET Owner Data
 export async function getOwners() {
   const response = await fetch(urlOwner);
@@ -63,68 +67,45 @@ export async function createOwner(data) {
   console.log(content);
 }
 
-// GET image
-// still needs to be fully implemented correctly
-export async function getImage(imgData) {
-  const client = new S3Client({
-    region: 'ca-central-1',
-    credentials: {
-      accessKeyId: 'AKIAY4ERSBRS6NVKSFON',
-      secretAccessKey: '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',
-    },
+const client = new S3Client({
+  region: 'ca-central-1',
+  credentials: {
+    accessKeyId: 'AKIAY4ERSBRS6NVKSFON',
+    secretAccessKey: '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',
+  },
+});
 
-  });
+///////////////////////////////////////////////////////////////////////////
+
+// GET image
+export async function getImage(imgKey) {
+
   const command = new GetObjectCommand({
     Bucket: 'testingbucketforcs191',
-    Key: imgData,
+    Key: imgKey,
   });
   const url = await getSignedUrl(client, command, { expiresIn: 3600 });
   console.log(url);
 
   return url;
-
-  // const response = await client.send(command);
-
-  // const str = await response.Body.transformToString();
-  // console.log(str);
-  // console.log(response.Body);
-
-  // const buffer = response.arrayBuffer();
-
-  // const base64string = Buffer.from(buffer, 'binary').toString('base64');
-  // return "data:image/jpeg;base64," + base64string;
-
-  // const response = await fetch (`${urlGETImages + imgData}`, {
-  //   method: 'GET',
-  //   mode: 'cors',
-  //   headers:
-  //   {
-  //     'Content-Type': 'image/jpeg' 
-  //   },
-  //   redirect: 'follow',
-  // });
-  // console.log(response.body);
-  // const url = URL.createObjectURL(response.body);
 }
 
 // PUT image
-export async function putImage(formData) {
-  console.log(formData.name);
-  const response = await fetch(`${urlPUTImages + formData.name}`, {
-    method: 'PUT',
-    body: formData,
-    mode: 'cors',
-    headers: 
-    {
-      'Content-Type': 'image/jpeg',
-      // 'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Credentials': true,
-      // 'Access-Control-Allow-Headers': 'Content-Type, X-Amz-Date, Authorization, X-Api-Key, X-Amz-Security-Token',
-    },
-  });
+export async function putImage(imgData) {
+  console.log(imgData);
+  const params = {
+    Bucket: 'testingbucketforcs191',
+    Key: imgData.name,
+    Body: imgData,
+    ContentType: 'image/jpeg',
+  }
   
-  console.log(response);
+  const command = new PutObjectCommand(params);
+
+  client.send(command);
 }
+
+///////////////////////////////////////////////////////////////////////////
 
 // GET lattitude and longitude
 export async function getCoords(user) {
