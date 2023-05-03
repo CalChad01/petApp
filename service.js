@@ -5,6 +5,8 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 // import 'dotenv/config.js';
 
+
+// !!! MOVE THESE TO .ENV
 const urlPet = `https://fshjjmdf66.execute-api.ca-central-1.amazonaws.com/pets`;
 const urlOwner = `https://7mc3sxy1v3.execute-api.ca-central-1.amazonaws.com/owners`;
 const urlAccount = `https://pluc2254u4.execute-api.ca-central-1.amazonaws.com/accounts`;
