@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className="h-20 bg-cyan-500 font-sans text-white text-4xl flex items-center shadow-xl">
       <span className="font-bold px-3 border-r-4 border-white select-none">
-        Pet Find-inator
+        HomeFurrYou
       </span>
       <ul className="flex items-center">
         <li className="px-3">
