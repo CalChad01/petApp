@@ -68,13 +68,13 @@ export async function createOwner(data) {
 ///////////////////////////////////////////////////////////////////////////
 
 // initialize s3 client
-const client = new S3Client({
-  region: 'ca-central-1',
-  credentials: {
-    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY,
-    secretAccessKey: import.meta.env.VITE_AWS_SECRET_KEY,
-  },
-});
+// const client = new S3Client({
+//   region: 'ca-central-1',
+//   credentials: {
+//     accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY,
+//     secretAccessKey: import.meta.env.VITE_AWS_SECRET_KEY,
+//   },
+// });
 
 // GET image
 export async function getImage(imgKey) {
