@@ -2,7 +2,8 @@
 
 
 ## __Members__: Jackson Buchmeyer, Calvin Chadima, Chi Dang, Kali Zerwas
-#### __Main Purpose__: Creating a website that matches rescue pets that need a home to an owner looking for a pet. The pets will be matched based on the owner's preferences, and the owners will be matched with the pets based on the preferable living conditions for the pet. 
+## __Main Goal__:
+Creating a website that matches rescue pets that need a home to an owner looking for a pet. The pets will be matched based on the owner's preferences, and the owners will be matched with the pets based on the preferable living conditions for the pet. 
 
 ## Website Link:
 https://main.d1hxa7tkjmc1rx.amplifyapp.com/
