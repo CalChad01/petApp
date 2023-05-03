@@ -107,7 +107,7 @@ function PetForm(props) {
               <span className="font-bold pr-3 pb-2 select-none">
                 Address (Street Name Town/City State ZIP ):
               </span>
-              <input name="contact" defaultValue={form.address} onChange={e => updateForm("address", e)} className="text-black rounded-md p-1 border-2 border-black border-opacity-25 bg-slate-100 hover:bg-slate-20"></input>
+              <input name="address" defaultValue={form.address} onChange={e => updateForm("address", e)} className="text-black rounded-md p-1 border-2 border-black border-opacity-25 bg-slate-100 hover:bg-slate-20"></input>
             </label>
 
             <label className="grid place-items-center p-3">
