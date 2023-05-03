@@ -1,8 +1,8 @@
-# petApp
+# HomeFurrYou
 
 
 ## __Members__: Jackson Buchmeyer, Calvin Chadima, Chi Dang, Kali Zerwas
-#### __Main Purpose__: Creating a website that matches rescue pets that need a home to an owner looking for a pet. The pets will be matched based on the owner's wishlist and preferences but also matches the pet based on who the pet would live best with
+#### __Main Purpose__: Creating a website that matches rescue pets that need a home to an owner looking for a pet. The pets will be matched based on the owner's preferences, and the owners will be matched with the pets based on the preferable living conditions for the pet. 
 
 ## Website Link:
 https://main.d1hxa7tkjmc1rx.amplifyapp.com/
