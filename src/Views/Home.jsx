@@ -40,7 +40,7 @@ function Home() {
     <div className="h-screen w-full">
       <div className="flex-1 h-1/2 bg-doghouse bg-no-repeat bg-cover bg-center">
         <div className="flex justify-center items-center w-full h-full">
-          <div className="bg-slate-50 h-fit w-fit">home page stuff</div>
+          <div className="bg-slate-50 h-fit w-fit">[Insert "Find Your Friend" Button Here]</div>
         </div>
       </div>
       <div className="h-2 bg-white"></div>

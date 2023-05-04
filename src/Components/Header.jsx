@@ -6,7 +6,7 @@ import { faHouse, faPaw, faDog, faUser, faPen } from '@fortawesome/free-solid-sv
 function Header() {
   return (
     <div>
-      <header className="h-16 bg-gradient-to-b from-cyan-500 to-blue-500 font-sans text-white text-4xl flex items-center shadow-xl">
+      <header className="h-16 bg-gradient-to-b from-cyan-500 to-blue-500 font-sans text-white md:text-4xl text-xl flex items-center shadow-xl">
         <span className="font-bold px-3 border-r-4 border-white select-none">
           HomeFurrYou
         </span>

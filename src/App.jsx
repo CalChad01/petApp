@@ -16,7 +16,7 @@ import ForgotPassword from './Views/ForgotPassword';
 function App() {
 
   return (
-    <div className="bg-gradient-to-b from-slate-100 to-cyan-200 h-screen w-screen overflow-x-hidden">
+    <div className="bg-gradient-to-b from-slate-100 to-blue-300 h-screen w-screen overflow-x-hidden">
       <Router>
         
         <Header />
