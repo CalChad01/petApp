@@ -6,7 +6,7 @@ import { faHouse, faPaw, faDog, faUser, faPen } from '@fortawesome/free-solid-sv
 function Header() {
   return (
     <div>
-      <header className="h-16 bg-gradient-to-b from-cyan-500 to-blue-500 font-sans text-white md:text-4xl text-xl flex items-center shadow-xl">
+      <header className="h-16 bg-gradient-to-b from-cyan-500 to-blue-500 font-sans text-white md:text-4xl text-2xl flex items-center shadow-xl">
         <span className="font-bold px-3 border-r-4 border-white select-none">
           HomeFurrYou
         </span>
@@ -34,7 +34,7 @@ function Header() {
           <li className="px-3 font-bold w-full flex justify-end">
             <Link
               to="/login"
-              className="hover:duration-100 hover:scale-105 block p-4"
+              className="hover:duration-100 hover:scale-105 block p-4 md:text-2xl text-base"
             >
               <FontAwesomeIcon
               icon={faPen}
