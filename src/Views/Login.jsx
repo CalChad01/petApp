@@ -35,15 +35,15 @@ function Login() {
         </h1>
 
         <form onSubmit={handleLogin} className="grid grid-cols-1 place-items-center">
-          <div className="grid grid-cols-2 gap-3">
-            <label className="grid place-items-center p-3">
+          <div className="grid grid-cols-2">
+            <label className="grid p-3">
               <span className="font-bold pr-3 pb-2 select-none">
-                Username:
+                Email:
               </span>
               <input name="username" defaultValue={form.username} onChange={e => updateForm("username", e)} className="text-black rounded-md p-1 border-2 border-black border-opacity-25 bg-slate-100 hover:bg-slate-200"></input>
             </label> 
 
-            <label className="grid place-items-center p-3">
+            <label className="grid p-3">
               <span className="font-bold pr-3 pb-2 select-none">
                 Password:
               </span>

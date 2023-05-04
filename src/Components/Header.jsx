@@ -21,6 +21,16 @@ function Header() {
               />
             </Link>
           </li>
+          <li className="px-3">
+            <Link
+              to="/match"
+              className="hover:duration-100 hover:scale-105 block p-4"
+            >
+              <FontAwesomeIcon
+              icon={faPaw}
+              />
+            </Link>
+          </li>
           <li className="px-3 font-bold w-full flex justify-end">
             <Link
               to="/login"

@@ -39,8 +39,8 @@ function Home() {
   return (
     <div className="h-screen w-full">
       <div className="flex-1 h-1/2 bg-doghouse bg-no-repeat bg-cover bg-center">
-        <div className="flex items-center w-full h-full">
-          <div className="bg-slate-50 h-10 w-10 ">hello</div>
+        <div className="flex justify-center items-center w-full h-full">
+          <div className="bg-slate-50 h-fit w-fit">home page stuff</div>
         </div>
       </div>
       <div className="h-2 bg-white"></div>
