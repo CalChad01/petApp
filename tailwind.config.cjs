@@ -12,6 +12,9 @@ module.exports = {
           '100%': { transform: 'translate(3000px)'},
         }
       },
+      backgroundImage: {
+        'doghouse': "url('/src/Assets/doghouse.jpg')",
+      },
     },
   },
   plugins: [],
