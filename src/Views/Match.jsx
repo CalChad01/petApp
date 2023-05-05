@@ -9,7 +9,7 @@ function Match() {
       <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
         <img className="w-full" src="src/Assets/mara.jpg" alt="Mara" />
         <div className="px-3 py-3">
-          <div className="font-bold text-2xl">Mara</div>
+          <div className="font-bold text-3xl">Mara</div>
         </div>
         <div className="px-3 pb-2 flex flex-wrap">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">3 years old</span>
@@ -27,7 +27,7 @@ function Match() {
       <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
         <img className="w-full" src="src/Assets/sip.jpg" alt="Sip" />
         <div className="px-3 py-3">
-          <div className="font-bold text-2xl">Sip</div>
+          <div className="font-bold text-3xl">Sip</div>
         </div>
         <div className="px-3 pb-2 flex flex-wrap">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">6 months</span>
@@ -43,7 +43,7 @@ function Match() {
       <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
         <img className="w-full" src="src/Assets/daemon.jpg" alt="Daemon" />
         <div className="px-3 py-3">
-          <div className="font-bold text-2xl">Daemon</div>
+          <div className="font-bold text-3xl">Daemon</div>
         </div>
         <div className="px-3 pb-2 flex flex-wrap">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">2 years old</span>
@@ -58,7 +58,7 @@ function Match() {
       <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
         <img className="w-full" src="src/Assets/soup.jpg" alt="Soup" />
         <div className="px-3 py-3">
-          <div className="font-bold text-2xl">Soup</div>
+          <div className="font-bold text-3xl">Soup</div>
         </div>
         <div className="px-3 pb-2 flex flex-wrap">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">6 months</span>
@@ -73,7 +73,7 @@ function Match() {
       <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
         <img className="w-full" src="src/Assets/franklin.jpg" alt="Franklin" />
         <div className="px-3 py-3">
-          <div className="font-bold text-2xl">Franklin</div>
+          <div className="font-bold text-3xl">Franklin</div>
         </div>
         <div className="px-3 pb-2 flex flex-wrap">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">1 year old</span>
@@ -91,7 +91,7 @@ function Match() {
       <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
         <img className="w-full" src="src/Assets/colby.jpg" alt="Colby" />
         <div className="px-3 py-3">
-          <div className="font-bold text-2xl">Colby</div>
+          <div className="font-bold text-3xl">Colby</div>
         </div>
         <div className="px-3 pb-2 flex flex-wrap">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">11 months</span>

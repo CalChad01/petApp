@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faPaw, faDog, faUser, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faPaw, faPen } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   return (
