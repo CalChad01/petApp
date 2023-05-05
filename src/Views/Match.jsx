@@ -1,71 +1,111 @@
 import { useState, useEffect } from 'react';
 import { match } from '../MatchingAlgorithm';
-import { getOwners } from '../../service';
 
 function Match() {
 
-  const [ownerData, setOwnerData] = useState([]);
-  const [matches, setMatches] = useState([]);
-  const [highList, setHighList] = useState([]);
-  const [medList, setMedList] = useState([]);
-  const [lowList, setLowList] = useState([]);
-
-  async function handleGetMatchData() {
-    await match().then(data => setMatches(data));
-  }
-
-  const handleGetOwnerData = () => {
-    getOwners().then(data => setOwnerData(data));
-  }
-  
-  useEffect(() => {
-    if (matches != []) {
-      setHighList(matches[0]);
-      setMedList(matches[1]);
-      setLowList(matches[2]);
-    }
-    handleGetOwnerData()
-  }, [matches]);
-
-
   return(
-    <div>
-      <button onClick={handleGetMatchData} className="bg-pink-500 text-white font-bold p-3 w-1/4 rounded-lg hover:duration-100 hover:scale-110 hover:bg-pink-600">Run Match Algorithm</button>
-      <h2 className="text-2xl font-bold">Owner:</h2>
-      <ul>
-        {
-        ownerData && ownerData.map(owner => (
-          <li key={owner.id}>Name: {owner.name} || Type: {owner.type} || Age: {owner.age} || Small Children? {owner.smallChildren}  || Other Pets? {owner.otherPets} || Contact: {owner.contact}</li>
-        ))
-        }
-      </ul>
-      <div className="h-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 py-10 select-none w-10/12 h-full">
 
+      <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
+        <img className="w-full" src="src/Assets/mara.jpg" alt="Mara" />
+        <div className="px-3 py-3">
+          <div className="font-bold text-3xl">Mara</div>
+        </div>
+        <div className="px-3 pb-2 flex flex-wrap">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">3 years old</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">Female</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Labrador Retriever / Great Dane</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ other animals</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ small children</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Spayed/Neutered</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Leash Trained</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Potty Trained</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Moderately Active</span>
+        </div>
       </div>
-      <h2 className="text-2xl font-bold">High Matches</h2>
-      <ul>
-        {
-          highList && highList.map(pet => (
-            <li key={pet.id}>Name: {pet.name} || Type: {pet.type} || Breed: {pet.breed} || Age: {pet.age} || Contact: {pet.contact}</li>
-          ))
-        }
-      </ul>
-      <h2 className="text-2xl font-bold">Medium Matches</h2>
-      <ul>
-        {
-          medList && medList.map(pet => (
-            <li key={pet.id}>Name: {pet.name} || Type: {pet.type} || Breed: {pet.breed} || Age: {pet.age} || Contact: {pet.contact}</li>
-          ))
-        }
-      </ul>
-      <h2 className="text-2xl font-bold">Low Matches</h2>
-      <ul>
-        {
-          lowList && lowList.map(pet => (
-            <li key={pet.id}>Name: {pet.name} || Type: {pet.type} || Breed: {pet.breed} || Age: {pet.age} || Contact: {pet.contact}</li>
-          ))
-        }
-      </ul>
+
+      <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
+        <img className="w-full" src="src/Assets/sip.jpg" alt="Sip" />
+        <div className="px-3 py-3">
+          <div className="font-bold text-3xl">Sip</div>
+        </div>
+        <div className="px-3 pb-2 flex flex-wrap">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">6 months</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">Female</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Domestic Shorthair</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ other animals</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ small children</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Spayed/Neutered</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Moderately Active</span>
+        </div>
+      </div>
+
+      <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
+        <img className="w-full" src="src/Assets/daemon.jpg" alt="Daemon" />
+        <div className="px-3 py-3">
+          <div className="font-bold text-3xl">Daemon</div>
+        </div>
+        <div className="px-3 pb-2 flex flex-wrap">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">2 years old</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">Male</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Shorthair</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ other animals</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ small children</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Pretty Active</span>
+        </div>
+      </div>
+
+      <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
+        <img className="w-full" src="src/Assets/soup.jpg" alt="Soup" />
+        <div className="px-3 py-3">
+          <div className="font-bold text-3xl">Soup</div>
+        </div>
+        <div className="px-3 pb-2 flex flex-wrap">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">6 months</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">Female</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Domestic Shorthair</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ other animals</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ small children</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Moderately Active</span>
+        </div>
+      </div>
+
+      <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
+        <img className="w-full" src="src/Assets/franklin.jpg" alt="Franklin" />
+        <div className="px-3 py-3">
+          <div className="font-bold text-3xl">Franklin</div>
+        </div>
+        <div className="px-3 pb-2 flex flex-wrap">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">1 year old</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">Male</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Mastiff</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ other animals</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ small children</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Spayed/Neutered</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Leash Trained</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Potty Trained</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Less Active</span>
+        </div>
+      </div>
+
+      <div className="bg-white max-w-sm h-full rounded-2xl overflow-hidden shadow-xl hover:scale-105">
+        <img className="w-full" src="src/Assets/colby.jpg" alt="Colby" />
+        <div className="px-3 py-3">
+          <div className="font-bold text-3xl">Colby</div>
+        </div>
+        <div className="px-3 pb-2 flex flex-wrap">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">11 months</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 h-7 w-fit">Male</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Labrador Retriever / Anatolian Shepherd</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Good w/ other animals</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Not good w/ small children</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Distemper</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Bordetella</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Parvovirus</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-fit">Less Active</span>
+        </div>
+      </div>
+
     </div>
   )
 

@@ -1,48 +1,35 @@
 import { useState } from "react";
-import { putImage, getImage } from "../../service";
-
-
-// https://youtu.be/9hCTdUIwmhA <-- file uploading with React video
+import nyanCat from '../Assets/nyanCat.gif';
 
 function Home() {
 
-  const [file, setFile] = useState();
-  const [image, setImage] = useState();
+  const [sure, setSure] = useState(false);
 
-  const handleChange = (e) => {
-
-    // set image state to display preview image
-    setImage(URL.createObjectURL(e.target.files[0]));
-
-    // modify file with new file ID
-    const tempFile = e.target.files[0];
-    console.log(tempFile);
-    const tempID = Math.floor(1000000000 + Math.random() * 9000000000);
-
-    const newFile = new File([tempFile], `${tempID}.jpg`);
-    setFile(newFile);
-    console.log(newFile);
-  }
-
-  const handleUpload = () => {
-
-    putImage(file);
-
-  }
-
-  // test file:
-  // "6817869341.jpg"
-  const handleGetImage = async () => {
-    setImage(await getImage("6817869341.jpg"))
+  const handleTitleClick = () => {
+    console.log('this was completely unnecessary...');
+    setSure(state => !state);
   }
 
   return (
-    <div>
-      <input type="file" accept="image/*" onChange={handleChange}></input>
-      <button onClick={handleUpload} className="bg-slate-500 border-black border hover:scale-110  text-white">Upload</button>
-      {image ? <img src={image} className="w-1/4" /> : null}
-      <button onClick={handleGetImage} className="bg-slate-500 border-black border hover:scale-110  text-white">Get</button>
-      
+    <div className="h-screen w-screen overflow-y-hidden select-none">
+      <div className="flex-1 h-4/5 bg-doghouse bg-no-repeat bg-cover bg-center">
+        {
+          sure ?
+          <div className="flex items-center">
+          <img src={nyanCat} className="w-32 animate-[fly_4s_forwards_1]"></img>
+        </div> :
+        null
+        }
+        <div className="flex justify-center items-center w-full h-full">
+          <div className="text-white font-semibold text-9xl drop-shadow-[0_3.0px_2.4px_rgba(0,0,0,0.8)]">
+            <button onClick={handleTitleClick}>
+              HomeFurrYou
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="h-2 bg-white"></div>
+      <div className="h-full bg-gradient-to-b from-cyan-500 to-blue-500"></div>
     </div>
   )
 }
